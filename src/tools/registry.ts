@@ -1,5 +1,5 @@
 import { StructuredToolInterface } from '@langchain/core/tools';
-import { createGetFinancials, createGetMarketData, createReadFilings, createScreenStocks } from './finance/index.js';
+import { createGetFinancials, createGetMarketData, createReadFilings, createScreenStocks, getCotReport, getXSentiment } from './finance/index.js';
 import { exaSearch, perplexitySearch, tavilySearch, WEB_SEARCH_DESCRIPTION, xSearchTool, X_SEARCH_DESCRIPTION } from './search/index.js';
 import { skillTool, SKILL_TOOL_DESCRIPTION } from './skill.js';
 import { webFetchTool, WEB_FETCH_DESCRIPTION } from './fetch/web-fetch.js';
@@ -11,6 +11,8 @@ import { GET_FINANCIALS_DESCRIPTION } from './finance/get-financials.js';
 import { GET_MARKET_DATA_DESCRIPTION } from './finance/get-market-data.js';
 import { READ_FILINGS_DESCRIPTION } from './finance/read-filings.js';
 import { SCREEN_STOCKS_DESCRIPTION } from './finance/screen-stocks.js';
+import { GET_COT_REPORT_DESCRIPTION } from './finance/get_cot_report.js';
+import { GET_X_SENTIMENT_DESCRIPTION } from './finance/get_x_sentiment.js';
 import { heartbeatTool, HEARTBEAT_TOOL_DESCRIPTION } from './heartbeat/heartbeat-tool.js';
 import { cronTool, CRON_TOOL_DESCRIPTION } from './cron/cron-tool.js';
 import { memoryGetTool, MEMORY_GET_DESCRIPTION, memorySearchTool, MEMORY_SEARCH_DESCRIPTION, memoryUpdateTool, MEMORY_UPDATE_DESCRIPTION } from './memory/index.js';
@@ -67,6 +69,20 @@ export function getToolRegistry(model: string): RegisteredTool[] {
       tool: createScreenStocks(model),
       description: SCREEN_STOCKS_DESCRIPTION,
       compactDescription: 'Screen stocks by financial criteria (P/E, growth, margins, etc.).',
+      concurrencySafe: true,
+    },
+    {
+      name: 'get_cot_report',
+      tool: getCotReport,
+      description: GET_COT_REPORT_DESCRIPTION,
+      compactDescription: 'CFTC TFF net positioning for major FX futures, cached for 24 hours.',
+      concurrencySafe: true,
+    },
+    {
+      name: 'get_x_sentiment',
+      tool: getXSentiment,
+      description: GET_X_SENTIMENT_DESCRIPTION,
+      compactDescription: 'Recent X/Twitter FX sentiment aggregates and top posts by likes.',
       concurrencySafe: true,
     },
     {

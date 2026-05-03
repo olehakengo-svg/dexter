@@ -11,4 +11,5 @@ export { createGetFinancials } from './get-financials.js';
 export { createGetMarketData } from './get-market-data.js';
 export { createReadFilings } from './read-filings.js';
 export { createScreenStocks } from './screen-stocks.js';
-
+export { getCotReport, GET_COT_REPORT_DESCRIPTION } from './get_cot_report.js';
+export { getXSentiment, GET_X_SENTIMENT_DESCRIPTION } from './get_x_sentiment.js';

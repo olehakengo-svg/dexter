@@ -147,6 +147,12 @@ Each file contains newline-delimited JSON entries tracking:
 
 This makes it easy to inspect exactly what data the agent gathered and how it interpreted results.
 
+## FX Research Tools
+
+`get_cot_report` fetches the CFTC weekly Financial Futures Traders in Financial Futures report and returns recent net positioning for USD, JPY, EUR, GBP, AUD, CAD, or CHF. Results are cached for 24 hours under `.dexter/cache/cot/` to avoid repeated CFTC requests.
+
+`get_x_sentiment` uses `X_BEARER_TOKEN` with X recent search to summarize tweet count, likes, retweets, and the top five posts by likes for an FX query. It is read-only and returns a structured rate-limit error on HTTP 429.
+
 ## 📱 How to Use with WhatsApp
 
 Chat with Dexter through WhatsApp by linking your phone to the gateway. Messages you send to yourself are processed by Dexter and responses are sent back to the same chat.

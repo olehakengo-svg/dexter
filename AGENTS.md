@@ -103,3 +103,12 @@
 - API keys stored in `.env` (gitignored). Users can also enter keys interactively via the CLI.
 - Config stored in `.dexter/settings.json` (gitignored).
 - Never commit or expose real API keys, tokens, or credentials.
+
+
+<claude-mem-context>
+# Memory Context
+
+# [dexter] recent context, 2026-05-03 4:19pm GMT+9
+
+No previous sessions found.
+</claude-mem-context>
